@@ -23,6 +23,13 @@ namespace blogger_graphQL
             _blogs.Add(new Blog { Id = "3", BlogContent = "Blog Content 3", BlogTitle = "#3 Title" });
         }
 
+        internal Blog AddBlog(Blog blog)
+        {
+            blog.Id = Guid.NewGuid().ToString();
+            _blogs.Add(blog);
+            return blog;
+        }
+
         private List<Blog> getBlogs(int index, int count)
         {   
             return _blogs.GetRange(index, count);            

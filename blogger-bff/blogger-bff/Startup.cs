@@ -34,7 +34,11 @@ namespace blogger_bff
 
             services.AddSingleton<BlogData>();
             services.AddSingleton<BloggerQuery>();
+            services.AddSingleton<BloggerMutation>();
+            
             services.AddSingleton<BlogType>();
+            services.AddSingleton<BlogInputType>();
+
 
             services.AddSingleton<ISchema, BloggerSchema>();
 
