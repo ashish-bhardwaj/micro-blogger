@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2048
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "blogger-bff", "blogger-bff\blogger-bff.csproj", "{9DF34711-CAF4-4597-A1E4-4778B960CD43}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "blogger-graphQL", "..\blogger-graphQL\blogger-graphQL.csproj", "{7D4E8834-8C43-46B2-9988-C208D585D550}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9DF34711-CAF4-4597-A1E4-4778B960CD43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DF34711-CAF4-4597-A1E4-4778B960CD43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DF34711-CAF4-4597-A1E4-4778B960CD43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DF34711-CAF4-4597-A1E4-4778B960CD43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D4E8834-8C43-46B2-9988-C208D585D550}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D4E8834-8C43-46B2-9988-C208D585D550}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D4E8834-8C43-46B2-9988-C208D585D550}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D4E8834-8C43-46B2-9988-C208D585D550}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E9CEC6E8-806D-481F-9909-78BE015435BF}
+	EndGlobalSection
+EndGlobal
