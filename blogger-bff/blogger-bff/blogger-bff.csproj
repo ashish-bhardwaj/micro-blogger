@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\blogger-graphQL\blogger-graphQL.csproj" />
+    <ProjectReference Include="..\blogger-graphQL\blogger-graphQL.csproj" />
   </ItemGroup>
 
 </Project>
