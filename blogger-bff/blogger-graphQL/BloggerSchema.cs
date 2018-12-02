@@ -9,7 +9,7 @@ namespace blogger_graphQL
         public BloggerSchema(IDependencyResolver resolver) : base(resolver)
         {
             Query = resolver.Resolve<BloggerQuery>();
-            //Mutation = resolver.Resolve<BloggerMutation>();
+            Mutation = resolver.Resolve<BloggerMutation>();
         }
     }
 }
