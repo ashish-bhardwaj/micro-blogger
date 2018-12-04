@@ -32,7 +32,7 @@ namespace blogger_bff
             services.AddSingleton<IDocumentExecuter, DocumentExecuter>();
             services.AddSingleton<IDocumentWriter, DocumentWriter>();
 
-            services.AddSingleton<BlogData>();
+            services.AddSingleton<IBlogData, BlogDataInMemory>();
             services.AddSingleton<BloggerQuery>();
             services.AddSingleton<BloggerMutation>();
             

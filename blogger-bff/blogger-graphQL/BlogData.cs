@@ -5,38 +5,43 @@ using System.Threading.Tasks;
 
 namespace blogger_graphQL
 {
-    interface IBlogData
+    public interface IBlogData
     {
         Task<Blog> GetBlogByIdAsync(String id);
 
         Task<List<Blog>> GetBlogsAsync(int index, int count);
+
+        Blog AddBlog(Blog blog);
     }
 
-    public class BlogData : IBlogData
+    public class BlogDataInMemory : IBlogData
     {
         private readonly List<Blog> _blogs = new List<Blog>();
 
-        public BlogData()
+        public BlogDataInMemory()
         {
             _blogs.Add(new Blog { Id = "1", BlogContent = "Blog Content 1", BlogTitle = "#1 Title" });
             _blogs.Add(new Blog { Id = "2", BlogContent = "Blog Content 2", BlogTitle = "#2 Title" });
             _blogs.Add(new Blog { Id = "3", BlogContent = "Blog Content 3", BlogTitle = "#3 Title" });
         }
 
-        internal Blog AddBlog(Blog blog)
+        private List<Blog> getBlogs(int index, int count)
+        {
+            return _blogs.GetRange(index, count);
+        }
+
+        public Blog AddBlog(Blog blog)
         {
             blog.Id = Guid.NewGuid().ToString();
             _blogs.Add(blog);
             return blog;
         }
-
-        private List<Blog> getBlogs(int index, int count)
-        {   
-            return _blogs.GetRange(index, count);            
-        }
-
+        
         public Task<List<Blog>> GetBlogsAsync(int index, int count)
         {
+            if (count == 0)
+                count = _blogs.Count;
+
             return Task.FromResult(getBlogs(index, count));
         }
 

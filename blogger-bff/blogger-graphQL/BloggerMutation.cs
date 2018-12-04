@@ -7,7 +7,7 @@ namespace blogger_graphQL
 {
     public class BloggerMutation : ObjectGraphType
     {
-        public BloggerMutation(BlogData data)
+        public BloggerMutation(IBlogData data)
         {
             Name = "Mutation";
 
