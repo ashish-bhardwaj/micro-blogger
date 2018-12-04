@@ -31,6 +31,19 @@ namespace blogger_graphQL
                     var blog = context.GetArgument<Blog>("blog");
                     return data.AddBlog(blog);
                 });
+
+            Field<BlogType>(
+                "createBlogTest",
+                arguments: new QueryArguments(
+                    new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "blogContent" },
+                    new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "blogTitle" }
+                ),
+                resolve: context =>
+                {
+                    var blogContent = context.GetArgument<string>("blogContent");
+                    var blogTitle = context.GetArgument<string>("blogTitle");
+                    return data.CreateBlog(blogContent, blogTitle);
+                });
         }
     }
 }

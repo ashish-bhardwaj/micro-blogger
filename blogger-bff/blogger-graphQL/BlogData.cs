@@ -12,6 +12,7 @@ namespace blogger_graphQL
         Task<List<Blog>> GetBlogsAsync(int index, int count);
 
         Blog AddBlog(Blog blog);
+        Blog CreateBlog(string title, string content);
     }
 
     public class BlogDataInMemory : IBlogData
@@ -36,7 +37,17 @@ namespace blogger_graphQL
             _blogs.Add(blog);
             return blog;
         }
-        
+
+        public Blog CreateBlog(string title, string content)
+        {
+            Blog blog = new Blog();
+            blog.BlogContent = content;
+            blog.BlogTitle = title;
+            blog.Id = Guid.NewGuid().ToString();
+            _blogs.Add(blog);
+            return blog;
+        }
+
         public Task<List<Blog>> GetBlogsAsync(int index, int count)
         {
             if (count == 0)

@@ -1,56 +1,35 @@
 import React, { Component } from 'react';
-import Home from './client/home.js';
-import BlogPost from './client/blogpost.js';
+import BlogList from './client/blogList.js';
 import './App.css';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import 'react-tabs/style/react-tabs.css';
-
+import CreateBlog from './client/createBlog.js';
+import Header from './client/header.js'
+import { Switch, Route } from 'react-router-dom'
 
 class App extends Component {
-  constructor(props) {
+  constructor(props){
     super(props);
-    this.state = {
-      blogs: []
-    };
     this.blogAdded = this.blogAdded.bind(this);
   }
 
-  componentDidMount(){
-    this.setState({
-      blogs: [
-        { blog: "A bfbk djknfjdbf", title: "A" },
-        { blog: "B bfbk djknfjdbf", title: "B" }
-      ]
-  });
-  }
-
-  blogAdded(e, blog) {
+  blogAdded(e) {
     e.preventDefault();
-    console.log(blog.title);
-    console.log(blog.blog);
-    
     this.setState( (prev) => ({
-      blogs: prev.blogs.concat(blog)
+      blogs: prev
     }));
   }
 
   render() {
     return (
-      <Tabs>
-        <TabList>
-          <Tab>Home</Tab>
-          <Tab>Blog post</Tab>
-        </TabList>
-
-        <TabPanel>
-          <Home blogs={this.state.blogs}/>
-        </TabPanel>
-        <TabPanel>
-          <BlogPost onSave={this.blogAdded}/>
-        </TabPanel>
-      </Tabs>
-
-    );
+      <div className="center w85">
+        <Header />
+        <div className="ph3 pv1 background-gray">
+          <Switch>
+            <Route exact path="/" component={BlogList} />
+            <Route exact path="/create" onSave={this.blogAdded} component={CreateBlog} />
+          </Switch>
+        </div>
+      </div>
+    )
   }
 }
 
