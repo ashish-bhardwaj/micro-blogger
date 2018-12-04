@@ -5,6 +5,7 @@ import './App.css';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
+
 class App extends Component {
   constructor(props) {
     super(props);

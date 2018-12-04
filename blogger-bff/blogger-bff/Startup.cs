@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace blogger_bff
 {
@@ -28,21 +29,25 @@ namespace blogger_bff
             //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddSingleton<IDependencyResolver>(s => new FuncDependencyResolver(s.GetRequiredService));
-
             services.AddSingleton<IDocumentExecuter, DocumentExecuter>();
             services.AddSingleton<IDocumentWriter, DocumentWriter>();
-
             services.AddSingleton<IBlogData, BlogDataInMemory>();
             services.AddSingleton<BloggerQuery>();
             services.AddSingleton<BloggerMutation>();
-            
             services.AddSingleton<BlogType>();
             services.AddSingleton<BlogInputType>();
-
-
             services.AddSingleton<ISchema, BloggerSchema>();
-
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            services.AddCors(options =>
+            {
+                /// ToDO : Make more secure
+                options.AddPolicy("AllowAllOrigins",
+                    builder => builder.AllowAnyOrigin()
+                            .AllowAnyMethod()
+                            .AllowAnyHeader()
+                            );
+            });
 
             services.AddGraphQL(_ =>
             {
@@ -53,17 +58,18 @@ namespace blogger_bff
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            loggerFactory.AddConsole();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors("AllowAllOrigins");
 
-            // add http for Schema at default url /graphql
             app.UseGraphQL<ISchema>("/graphql");
-            // use graphql-playground at default url /ui/playground
             app.UseGraphQLPlayground(new GraphQLPlaygroundOptions
             {
                 Path = "/ui/playground"
