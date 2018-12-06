@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
-import Blog from './blog.js';
+import Blog from './Blog.js';
 
 const GET_BLOGS = gql`
   {

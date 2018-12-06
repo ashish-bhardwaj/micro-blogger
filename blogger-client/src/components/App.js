@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import BlogList from './blogList.js';
+import BlogList from './BlogList.js';
 import '../styles/App.css';
-import CreateBlog from './createBlog.js';
-import Header from './header.js'
+import CreateBlog from './CreateBlog.js';
+import Header from './Header.js'
 import { Switch, Route } from 'react-router-dom'
 
 class App extends Component {
